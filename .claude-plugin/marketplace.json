@@ -1,0 +1,13 @@
+{
+  "name": "claude-xp",
+  "owner": {
+    "name": "SamanxIOM"
+  },
+  "plugins": [
+    {
+      "name": "xp",
+      "source": "./",
+      "description": "Game-themed git workflow skills: newgame, checkpoint, speedrun, finalboss, respawn."
+    }
+  ]
+}
