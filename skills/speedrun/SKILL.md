@@ -4,12 +4,9 @@ description: Commit and push current work | Create a Pull Request | Set to squas
 disable-model-invocation: true
 ---
 
-# Models
+# How to run
 
-- Run the steps below by delegating to an Agent subagent. Claude should determine which model and effort is best to use.
-- If the work can be split into independent parts, e.g. one part per repo, use multiple subagents running in parallel, and use a workflow if workflows are available. Only one subagent may change any one repo at a time.
-- The subagent cannot see this conversation. In its prompt, include anything it needs from it, such as a short summary of the work being saved and any GitHub issue numbers linked to it.
-- When it finishes, return to the main session and report the result.
+Run the steps below yourself, in the main chat. Do not delegate to a subagent.
 
 # Task
 
