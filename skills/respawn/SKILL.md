@@ -115,6 +115,18 @@ For each label's colours, use that colour from the widget's own colour palette (
 # RETURN TO SPAWN | LOCAL | Reset Branch to Default Branch | CURRENT USER
 
 - Go through each repo
+- First, find any spare copies of the repo, e.g. `shop-checkout-site-2` next to `shop-checkout-site`. A spare copy is either:
+  - a git worktree of the repo (its `.git` is a file, and it is listed in the repo's `git worktree list`), or
+  - a separate clone with the same GitHub remote as the repo.
+- For clones that share a GitHub remote, the main repo is the folder whose name matches the GitHub repo name. The others are spare copies. If no folder name matches, treat them all as normal repos and do not delete any.
+- Do not show spare copies as repos of their own in this table. Show them in the main repo's row.
+- Deal with each spare copy:
+  - If the copy has uncommitted code, save it to a "save-point" branch, the same way as below.
+  - If the copy is a separate clone, push every branch that has commits not on GitHub, so no work is lost. Do not push the default branch: if it has commits not on GitHub, move them onto a "save-point" branch and push that instead.
+  - Then delete the copy. For a worktree, use `git worktree remove`. For a clone, delete its folder. Keep the branches, so DESPAWN and INVENTORY CHECK can deal with them.
+  - If anything could not be saved or pushed, or the worktree is locked, do not delete the copy. Keep it and report it.
+- Then run `git worktree prune` in the main repo, to clear any worktrees whose folders were already deleted by hand.
+- Leave deleted copies out of all the tables after this one.
 - If there is any uncommitted code, first create a branch called "save-point" from the current branch/worktree, then stage, commit and sync the code onto it. Don't have anything stashed in the repo, branch only. If there is already a branch called "save-point", append a number to the new branch name, e.g. "save-point-1".
 - When staging for a "save-point" branch, follow the repo's `.gitignore`. Only stage files that git does not ignore, and never force-add an ignored file.
 - Then, for any repo not on its default branch, switch to the repo's default branch. Sync it from the GitHub remote.
@@ -130,6 +142,7 @@ For each label's colours, use that colour from the widget's own colour palette (
     ```
   - There is no separate column for who made the change, as each line already names them.
   - Any "save-point" branches made.
+  - Spare copies deleted, one per line, by folder name. If a copy was kept, show its name and the reason, e.g. `shop-checkout-site-2 (kept, worktree is locked)`. If there were none, say "none".
 
 
 # DESPAWN | LOCAL & REMOTE | Merged Branches Deleted | CURRENT USER
