@@ -2,7 +2,7 @@
 
 `xp` is a Claude Code plugin with a small set of game-themed git workflow skills. This repo offers that one plugin and nothing else.
 
-Version: 1.0.0
+Version: 1.1.1
 
 ## Skills
 

@@ -93,7 +93,10 @@ For each label's colours, use that colour from the widget's own colour palette (
   ```
 
   A branch name with no `/` is shown on one line.
-- In every table, let every column wrap its text, so no column is forced wide and the table fits without squashing. Repo paths are the one exception, see above. A long part of a branch name may still wrap within its own line.
+- In every table, let every column wrap its text, so no column is forced wide and the table fits without squashing. A long part of a branch name may still wrap within its own line. The exceptions, which never wrap (in HTML, set `white-space: nowrap` on both the heading and the cells):
+  - repo paths, see above
+  - the "Who" column in RETURN TO SPAWN
+  - the "CI tests" and "Auto-merge" columns in both INVENTORY CHECK tables
 - In every table, make each remote branch name and each PR number a link that opens it on GitHub:
   - A remote branch links to its page, e.g. `https://github.com/<owner>/<repo>/tree/<branch>`.
   - A PR number links to the PR, e.g. `https://github.com/<owner>/<repo>/pull/<number>`.
@@ -133,16 +136,19 @@ For each label's colours, use that colour from the widget's own colour palette (
 
 - Create a table named the same name as this step
   - Repo name
-  - What changes have happened on the repo's default branch since this machine last synced it, e.g. deployed xyz. Head this column "Changes on default branch since last sync". Put each change on its own line, always, even when a line holds only a few words. Never join changes on one line with `;` or `,`. Write each line as a brief summary of the change, then ` - `, then the PR number, then ` - `, then the GitHub username of the person who made the change, with a space either side of each dash. The PR number is a link to the PR. If a change has no PR, leave out the PR number and its dash. For example:
+  - What changes have happened on the repo's default branch since this machine last synced it, e.g. deployed xyz. Head this column "Changes on default branch since last sync". Each change gets its own row in the table. Never join changes on one line with `;` or `,`. Write each change as the PR number, then ` - `, then a brief summary of the change, with a space either side of the dash. The PR number is a link to the PR. If a change has no PR, show the summary alone. For example:
 
     ```
-    added Apple Pay at checkout - #41 - jordan-k
-    fixed broken image on product page - #43 - priya-dev
-    deployed v2.3.0 to production - tomasz-w
+    #41 - added Apple Pay at checkout
+    deployed v2.3.0 to production
+    #43 - fixed broken image on product page
     ```
-  - There is no separate column for who made the change, as each line already names them.
+  - Show the changes in the order they reached the default branch, oldest first. Use the time each change landed on the default branch (the merge time for a PR, the commit time for a direct push), so a direct push sits between the PRs it landed between.
+  - Who made each change, in a column headed "Who", as their GitHub username. It sits on the same row as its change, so each name lines up with its PR number and summary. If a row has no change, say "none".
   - Any "save-point" branches made.
   - Spare copies deleted, one per line, by folder name. If a copy was kept, show its name and the reason, e.g. `shop-checkout-site-2 (kept, worktree is locked)`. If there were none, say "none".
+- Each repo still shows as one repo. Its repo name, save-point and spare copies cells span all of its change rows (in HTML, `rowspan`). Only the change and "Who" cells have a row each. Separate a repo's change rows with a light dashed line, and keep the normal solid line between repos.
+- If a repo has no changes, show one row for it, with "none" in both the changes and "Who" columns.
 
 
 # DESPAWN | LOCAL & REMOTE | Merged Branches Deleted | CURRENT USER
@@ -161,7 +167,7 @@ For each label's colours, use that colour from the widget's own colour palette (
 - Create a table named the same name as this step, showing only the current user's branches and PRs
   - repo name
   - the branch name
-  - the PR summary, then ` - `, then the PR number, with a space either side of the dash, e.g. `add full-text search - #7`. There is no separate PR number column in this table. The PR number is still a link to the PR.
+  - the PR number, then ` - `, then the PR summary, with a space either side of the dash, e.g. `#7 - add full-text search`. There is no separate PR number column in this table. The PR number is still a link to the PR.
   - local branch: deleted / did not exist / kept, with the reason
   - remote branch: deleted / already gone / failed, with the reason
 - There is no owner column in this table, as every row belongs to the current user.
@@ -191,9 +197,9 @@ This step deletes nothing. It shows what is left after the step above, split int
   - repo name
   - local branch: "yes" if this machine has a local copy of the branch, or "none" if it does not. Do not repeat the branch name here, as it is the same as the remote branch name.
   - the remote branch name, linked to the branch on GitHub. If the branch is only on this machine and not on GitHub, still show its name here, as plain text with `(only on this machine)` under it, so the branch name is never lost.
-  - the PR summary linked to the branch, if there is one, then ` - `, then the PR number, with a space either side of the dash, e.g. `add tags to notes - #9`. The PR number is still a link to the PR. If a branch has more than one PR, put each PR on its own line, always.
-  - CI tests passed/failed
-  - If auto-merge is enabled/disabled
+  - the PR linked to the branch, if there is one, as the PR number, then ` - `, then the PR summary, with a space either side of the dash, e.g. `#9 - add tags to notes`. The PR number is still a link to the PR. If a branch has more than one PR, put each PR on its own line, always.
+  - CI tests passed/failed, in a column headed "CI tests" that never wraps
+  - If auto-merge is enabled/disabled, in a column headed "Auto-merge" that never wraps
   - Why it has not merged (if known, otherwise say unknown). If there is no PR, say "no PR".
 - There is no owner column in this table, as every row belongs to the current user.
 - If a repo has no branches owned by the current user, show one row for that repo that says "no branches of your own". Every repo gets its own row with its own repo name.
@@ -213,10 +219,10 @@ This step deletes nothing. It shows what is left after the step above, split int
   - the local & remote branch name, in one column headed "Local & remote branch". After the sync above, the local and remote branches have the same name, so one column shows both. The name links to the remote branch. Add a note under the name only when the local copy is not the same as the remote branch:
     - `(no local copy)` for a merged branch this machine does not have.
     - `(not updated, has your own commits)` for a local copy the sync left alone.
-  - the PR summary linked to the branch, then ` - `, then the PR number, then ` - `, then the GitHub username of the owner, with a space either side of each dash, e.g. `gift cards at checkout - #36 - jordan-k`. The PR number is still a link to the PR. If a branch has more than one PR, put each PR on its own line, always. If the branch has no PR, show `no PR - ` and the owner, e.g. `no PR - jordan-k`, so the owner is always shown.
+  - the PR linked to the branch, as the PR number, then ` - `, then the PR summary, then ` - `, then the GitHub username of the owner, with a space either side of each dash, e.g. `#36 - gift cards at checkout - jordan-k`. The PR number is still a link to the PR. If a branch has more than one PR, put each PR on its own line, always. If the branch has no PR, show `no PR - ` and the owner, e.g. `no PR - jordan-k`, so the owner is always shown.
   - There is no separate owner column in this table, as the PR summary names the owner.
-  - CI tests passed/failed
-  - If auto-merge is enabled/disabled
+  - CI tests passed/failed, in a column headed "CI tests" that never wraps
+  - If auto-merge is enabled/disabled, in a column headed "Auto-merge" that never wraps
   - Why it has not merged (if known, otherwise say unknown). If there is no PR, say "no PR". If the PR has merged but the remote branch was kept because it belongs to someone else, say "merged, belongs to" and the person's name.
 - Sort the rows within each repo by owner, so each person's branches sit together.
 - If a repo has no branches owned by other users, show one row for that repo that says "no other users' branches". Every repo gets its own row with its own repo name.
