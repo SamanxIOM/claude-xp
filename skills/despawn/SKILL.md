@@ -35,6 +35,8 @@ Run the steps below yourself, in the main chat. Do not delegate to a subagent.
 
 - If a local branch has no merged PR, leave it.
 
+- If a local branch has commits that are not on GitHub, leave it, even if its PR has merged, so no work is lost.
+
 - If a remote branch's PR has merged, and the PR was owned by the current user, delete the remote branch. Leave other people's remote branches alone.
 
 - If a remote branch has no merged PR, leave it.
