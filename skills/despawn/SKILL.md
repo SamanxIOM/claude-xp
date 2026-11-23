@@ -31,11 +31,13 @@ Run the steps below yourself, in the main chat. Do not delegate to a subagent.
 
 - Check what remote branches there are
 
-- If the local branch has no remote branch, leave it, unless its PR was owned by the current user and has merged. Then delete the local branch.
+- If a local branch's PR has merged, delete the local branch, whoever owned the PR. Local branches are only on this machine, so removing them affects no one else.
 
-- If a remote branch has no local branch, leave it.
+- If a local branch has no merged PR, leave it.
 
-- If the local branch or remote branch has been merged into the default branch, and the PR was owned by the current user, it is therefore no longer needed. Delete the local branch and/or remote branch of merged PRs only, and owned by the current user.
+- If a remote branch's PR has merged, and the PR was owned by the current user, delete the remote branch. Leave other people's remote branches alone.
+
+- If a remote branch has no merged PR, leave it.
 
 - A PR counts as merged only when GitHub shows it as merged and its base branch is the default branch.
 
@@ -52,3 +54,5 @@ Run the steps below yourself, in the main chat. Do not delegate to a subagent.
   - Remote branch status (none / remains / deleted)
 
   - PR Link
+
+  - PR Owner
