@@ -1,6 +1,6 @@
 {
   "name": "xp",
-  "description": "Game-themed git workflow skills: newgame, checkpoint, speedrun, finalboss, oldrespawn.",
-  "version": "1.1.1",
+  "description": "Game-themed git workflow skills: newgame, checkpoint, speedrun, finalboss, respawn, despawn, questlog.",
+  "version": "2.0.0",
   "license": "MIT"
 }

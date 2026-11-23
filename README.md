@@ -2,7 +2,7 @@
 
 `xp` is a Claude Code plugin with a small set of game-themed git workflow skills. This repo offers that one plugin and nothing else.
 
-Version: 1.1.1
+Version: 2.0.0
 
 ## Skills
 
@@ -12,7 +12,9 @@ Version: 1.1.1
 | `/xp:checkpoint` | Commits and pushes your current work. No pull request. |
 | `/xp:speedrun` | Commits, pushes, opens a pull request, and sets it to squash and auto-merge. |
 | `/xp:finalboss` | Commits, pushes, and opens a pull request that does not auto-merge. |
-| `/xp:oldrespawn` | Tidies every repo in the folder back to its default branch, deletes local and remote branches whose pull request has merged, and summarises the remaining branches, pull requests and issues. |
+| `/xp:respawn` | Saves any uncommitted work to a `save-point` branch, switches every repo in the folder to its default branch, syncs it, and lists what changed on it. |
+| `/xp:despawn` | Deletes the local and remote branches of your merged pull requests. Never touches anyone else's branches. |
+| `/xp:questlog` | Counts blocked, unblocked and total open issues in every repo in the folder. |
 
 The skills only run when you type them. Claude will not start them on its own.
 

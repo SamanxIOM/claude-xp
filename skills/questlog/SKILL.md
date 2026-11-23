@@ -1,6 +1,6 @@
 ---
 name: questlog
-description: Count open issues in every repo, by blocked and who they are assigned to
+description: Count blocked, unblocked and total open issues in every repo
 disable-model-invocation: true
 model: sonnet
 effort: medium
