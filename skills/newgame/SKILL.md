@@ -2,6 +2,8 @@
 name: newgame
 description: Prepare a fresh repo with a gitignore baseline, README, CLAUDE.md and starter folders
 disable-model-invocation: true
+model: sonnet
+effort: medium
 ---
 
 # How to run
