@@ -2,8 +2,8 @@
 name: respawn
 description: Reset every repo in the folder to its default branch
 disable-model-invocation: true
-model: haiku
-effort: low
+model: sonnet
+effort: medium
 ---
 
 # How to run

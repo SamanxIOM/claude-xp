@@ -2,6 +2,8 @@
 name: speedrun
 description: Commit and push current work | Create a Pull Request | Set to squash and auto-merge
 disable-model-invocation: true
+model: sonnet
+effort: medium
 ---
 
 # How to run

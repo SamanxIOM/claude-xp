@@ -2,6 +2,8 @@
 name: finalboss
 description: Commit and push current work | Create a Pull Request | Do not auto-merge
 disable-model-invocation: true
+model: sonnet
+effort: medium
 ---
 
 # How to run

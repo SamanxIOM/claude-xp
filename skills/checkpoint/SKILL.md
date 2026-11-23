@@ -2,6 +2,8 @@
 name: checkpoint
 description: Commit and push current work
 disable-model-invocation: true
+model: sonnet
+effort: medium
 ---
 
 # How to run
