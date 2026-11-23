@@ -12,7 +12,7 @@ Version: 1.1.1
 | `/xp:checkpoint` | Commits and pushes your current work. No pull request. |
 | `/xp:speedrun` | Commits, pushes, opens a pull request, and sets it to squash and auto-merge. |
 | `/xp:finalboss` | Commits, pushes, and opens a pull request that does not auto-merge. |
-| `/xp:respawn` | Tidies every repo in the folder back to its default branch, deletes local and remote branches whose pull request has merged, and summarises the remaining branches, pull requests and issues. |
+| `/xp:oldrespawn` | Tidies every repo in the folder back to its default branch, deletes local and remote branches whose pull request has merged, and summarises the remaining branches, pull requests and issues. |
 
 The skills only run when you type them. Claude will not start them on its own.
 

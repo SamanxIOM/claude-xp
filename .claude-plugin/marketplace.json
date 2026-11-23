@@ -7,7 +7,7 @@
     {
       "name": "xp",
       "source": "./",
-      "description": "Game-themed git workflow skills: newgame, checkpoint, speedrun, finalboss, respawn."
+      "description": "Game-themed git workflow skills: newgame, checkpoint, speedrun, finalboss, oldrespawn."
     }
   ]
 }

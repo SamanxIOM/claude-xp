@@ -1,5 +1,5 @@
 ---
-name: respawn
+name: oldrespawn
 description: Tidy every repo in the folder
 disable-model-invocation: true
 ---
@@ -39,7 +39,7 @@ For each label's colours, use that colour from the widget's own colour palette (
 # Prelim Step
 
 - If using the Claude desktop app
-  - if this is a new session, rename the session to the folder name plus the word "respawn", e.g. "folder-respawn".
+  - if this is a new session, rename the session to the folder name plus the word "oldrespawn", e.g. "folder-oldrespawn".
   - If this is an existing session, don't rename the session name
 - Review the current folder.
   - If the current folder is one repo, review the one repo.
@@ -159,7 +159,7 @@ For each label's colours, use that colour from the widget's own colour palette (
 - Check what PRs the local and remote branches are linked to, if they are linked.
 - This step only looks at the current user's own work. Only branches whose PR was opened by the current user are considered.
 - For every branch whose PR has been merged, and whose PR was opened by the current user, delete the local branch and delete the remote branch.
-- Never delete or change anything that belongs to another user, not their remote branch and not a local copy of it on this machine. Each person runs respawn on their own machine to tidy their own work. Other users' branches only show in the INVENTORY CHECK table for other users.
+- Never delete or change anything that belongs to another user, not their remote branch and not a local copy of it on this machine. Each person runs oldrespawn on their own machine to tidy their own work. Other users' branches only show in the INVENTORY CHECK table for other users.
 - Never delete the repo's default branch.
 - Do not delete a local branch that has commits which are not part of the merged PR, as that work would be lost. Leave it, and leave its remote branch, so they show in the INVENTORY CHECK table for the current user.
 - If a branch is already gone, or a deletion fails (e.g. the branch is protected), carry on and show that in the table.
