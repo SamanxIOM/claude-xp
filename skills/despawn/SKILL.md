@@ -27,27 +27,25 @@ Run the steps below yourself, in the main chat. Do not delegate to a subagent.
 
 - Go through each repo
 
-- Check what local branches there are, owned by the current user.
+- Check what local branches there are
 
-- Check what remote branches there are, owned by the current user.
+- Check what remote branches there are
 
-- If the local branch or remote branch has been merged into the default branch, and is owned by the current user, it is therefore no longer needed. Delete the local branch and/or remote branch of merged PRs only.
+- If the local branch has no remote branch, leave it, unless its PR was owned by the current user and has merged. Then delete the local branch.
+
+- If a remote branch has no local branch, leave it.
+
+- If the local branch or remote branch has been merged into the default branch, and the PR was owned by the current user, it is therefore no longer needed. Delete the local branch and/or remote branch of merged PRs only.
 
 - Never delete the repo's default branch.
-
-- Do not delete any local branch or remote branch that has no PR and has not been merged into the default branch.
-
-- A branch is owned by the person who created the branch. Find them with GitHub's repo activity, e.g. `gh api "repos/<owner>/<repo>/activity?ref=<branch>&activity_type=branch_creation"`, and compare the actor's username with the current user's GitHub username (`gh api user`). A local branch with no remote branch belongs to the current user.
 
 - Create a table named the same name as this step. Show it as a plain markdown table.
 
   - Repo name
 
-  - Local branch name
+  - Local + Remote branch name
 
-  - Remote branch name
-
-  - Local branch deleted (yes / no / no local copy)
+  - Local branch deleted (yes / no)
 
   - Remote branch deleted (yes / no / already gone)
 
